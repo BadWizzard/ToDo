@@ -1,0 +1,50 @@
+    <div class="container" style="background-image:url(http://s019.radikal.ru/i623/1610/ef/9707683991b3.png)"> 
+      
+        <!--<a href="#myPopUp" class="btn btn-primary btnTable" data-toggle="modal">Добавить запись</a>-->
+        <a href="#myPopUp" id="add" data-toggle="modal">ДОБАВИТЬ ЗАПИСЬ</a> 
+        <div id="myPopUp" class="modal fade">
+            <div class="modal-dialog" >
+                <div class="modal-content" id="popUp">
+                    <div class="modal-body" >
+                        <p id="formTitle">Добавить Запись</p>
+                        <hr color="#2c3e50" style="width:20%;">
+                        <form name="popForm">
+                            <center>
+                                <input id="site" class="input-xlarge" type="text" placeholder="САЙТ" oninput="validate()" required>
+                                <input id="login" class="input-xlarge" type="text" placeholder="ЛОГИН" oninput="validate()" required>
+                                <input id="password" class="input-xlarge" type="text" placeholder="ПАРОЛЬ" oninput="validate()" required> </center>
+                        </form>
+                        <center>
+                            <button onClick="addToTable(),document.popForm.reset(),validate()" type="submit" class="btnForm" data-dismiss="modal" style="margin:30px 0 20px 0" name="popBtn" disabled>ДОБАВИТЬ</button>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" style="padding:20px 0 0 0">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <p>Сайт</p>
+                        </th>
+                        <th>
+                            <p>Логин</p>
+                        </th>
+                        <th>
+                            <p>Пароль</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--<tr>-->
+                    <!--<td> </td>-->
+                    <!--<td> </td>-->
+                    <!--<td> </td>-->
+                    <!--</tr>-->
+                </tbody>
+            </table>
+        </div>
+    </div>
