@@ -3,7 +3,7 @@
     var moduleId = "TodoCtrl";
     angular.module("ToDo").controller(moduleId, [todoCtrl]);
 
-    function dietCtrl() {
+    function todoCtrl() {
 
         var td = this;
 
