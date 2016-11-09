@@ -1,3 +1,17 @@
+#chengelink{
+    text-decoration:none;
+    cursor:pointer;
+}
+#chengelink:hover{
+    text-decoration:none;
+    cursor:pointer;
+    color:#5c7b9f;
+}
+#filter{
+    display: inline-block;
+    margin:0 0 0 200px;
+    width:250px;
+}
 #add {
     text-decoration: none;
     margin: 20px 0 20px 0;
@@ -12,6 +26,7 @@
     display: inline-block;
     font-weight: 700;
     font-family: 'Comfortaa', cursive;
+    
 }
 
 #add:hover {
@@ -121,9 +136,7 @@ td {
     background-color: #f4f9ff;
     
 }
-tr:hover{
-    background-color: #5c7b9f !important;
-}
+
 .btnForm {
     font-family: 'Comfortaa', cursive;
     width: 200px;
@@ -136,7 +149,18 @@ tr:hover{
     font-size: 17px;
     letter-spacing: 2px;
 }
-
+.btnFormCh {
+    font-family: 'Comfortaa', cursive;
+    width: 200px;
+    height: 45px;
+    border-radius: 25px;
+    background-color:#2ecc71;
+    border-style: none;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 2px;
+}
 .btnTable {
     font-family: 'Comfortaa', cursive;
     width: 200px;
