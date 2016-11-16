@@ -11,14 +11,14 @@
         td.import = [];
         td.filterByTask = "";
         td.sortField = "";
+        td.popup = "";
         td.reverse = false;
+        td.currentInf = null;
         td.save = save;
         td.sort = sort;
         td.add = add;
         td.edit = edit;
         td.delete = delet;
-        td.currentInf = null;
-        td.popup = "";
 
         init();
 
@@ -43,7 +43,7 @@
                 index:1,
                 task: 'Покушать',
                 importance: td.import[1].text,
-                date: '2015-08-18 15:30',
+                date: '2015-06-18 15:30',
             }];
         }
 
@@ -72,17 +72,13 @@
             console.log("delete");
             for(var i = 0; i < td.rows.length; i++) {
                 if(row.index == td.rows[i].index) {
-                    delete td.rows[i];
+                    td.rows.splice(i,1);
                 }
             }
         }
         function sort(fieldName) {
-            if (td.sortField === fieldName) {
-                td.reverse = !td.reverse;
-            } else {
-                td.sortField = fieldName;
-                td.reverse = false;
-            }
+            td.reverse = !td.reverse;
+            td.sortField = fieldName;
         }
     }
 
