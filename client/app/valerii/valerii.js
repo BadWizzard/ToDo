@@ -26,11 +26,11 @@
 
             td.rows = [{
                 task: 'Поспать',
-                importance: td.import[0].value,
+                importance: td.import[0].text,
                 date: '2015-08-08 7:30',
             }, {
                 task: 'Покушать',
-                importance: td.import[1].value,
+                importance: td.import[1].text,
                 date: '2015-08-18 15:30',
             }];
         }
