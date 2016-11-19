@@ -9,15 +9,15 @@
                     <div class="container" style="width: 50%;">
                         <form name="popForm">
                             <center>
-                                <input id="task" class="input-xlarge" type="text" ng-model="td.currentInf.task" placeholder="ЗАДАЧА">
-                                <select class="form-control input-xlarge" ng-model="td.currentInf.importance">
-                                    <option ng-repeat="opt in td.import" value="{{opt.value}}">{{opt.text}}</option>
+                                <input id="task" class="input-xlarge" type="text" ng-change="td.valid(td.currentInf.task)" ng-model="td.currentInf.task" placeholder="ЗАДАЧА">
+                                <select class="form-control" ng-model="td.currentInf.importance">
+                                    <option ng-repeat="rw in td.import" value="{{rw.value}}" ng-selected="rw.text == td.currentInf.importance">{{rw.text}}</option>
                                 </select>
-                                <input id="data" class="input-xlarge" ng-model="td.currentInf.date" type="data" placeholder="ДАТА" required> </center>
+                                <input id="data" class="input-xlarge" ng-model="td.currentInf.date" type="date" value="{{td.currentInf.date}}" required> </center>
                         </form>
                     </div>
                     <center>
-                        <button onClick="document.popForm.reset()" ng-click="td.save()" type="submit" class="btnForm" data-dismiss="modal" style="margin:30px 0 20px 0" name="popBtn">{{td.popup}}</button>
+                        <button ng-class="{btnForm: true, btnAct: td.butCheck}" ng-click="td.save()" type="submit" data-dismiss="modal" style="margin:30px 0 20px 0" name="popBtn">{{td.popup}}</button>
                     </center>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                     </button>
                 </th>
                 <th>Важность
-                    <button class="btn btn-default btn-xs" ng-click="td.sort(importance)">
+                    <button class="btn btn-default btn-xs" ng-click="td.sort(importance_val)">
                         <i class="glyphicon glyphicon-sort-by-attributes"></i>
                     </button>
                 </th>
@@ -55,18 +55,18 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr ng-repeat="row in td.rows | filter: {task: td.filterByTask} | orderBy:td.sortField:td.reverse" >
+            <tr ng-repeat="row in td.rows | filter: {task: td.filterByTask} | orderBy:td.sortField:td.reverse" ng-class="{cross: row.check}">
                 <td align="center" width="30">
-                    <input type="checkbox">
+                    <input type="checkbox" ng-model="row.check">
                 </td>
                 <td>
                     <a href="#myPopUp" data-toggle="modal" id="changelink" ng-click="td.edit(row)"><span ng-bind="row.task"></span></a>
                 </td>
                 <td width="300px">
                     <a href="#myPopUp" data-toggle="modal" id="changelink" ng-click="td.edit(row)"><span ng-bind="row.importance"></span></a>
-                </td> 
+                </td>
                 <td width="210px">
-                    <a href="#myPopUp" data-toggle="modal" id="changelink" ng-click="td.edit(row)"><span ng-bind="row.date"></span></a>
+                    <a href="#myPopUp" data-toggle="modal" id="changelink" ng-click="td.edit(row)"><span ng-bind="row.date | date:'dd-mm-yyyy'"></span></a>
                 </td>
                 <td width="60px">
                     <a ng-click="td.delete(row)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
