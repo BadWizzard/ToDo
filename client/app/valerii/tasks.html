@@ -1,5 +1,6 @@
 ﻿<div class="container wrap" ng-controller="TodoCtrl as td">
-    <a href="#myPopUp" id="add" ng-click="td.add()" data-toggle="modal" style="margin-bottom: 30px;">ДОБАВИТЬ ЗАПИСЬ</a>
+    <a href="#myPopUp" id="add" ng-click="td.add()" data-toggle="modal" style="margin-bottom: 30px; margin-right: 20px;">ДОБАВИТЬ ЗАПИСЬ</a>
+    <button id="add" ng-click="td.deleteRows()" style="margin-bottom: 30px; background-color: #F78181;">УДАЛИТЬ ЗАДАНИЯ</button>
     <div id="myPopUp" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content" id="popUp">
@@ -9,15 +10,15 @@
                     <div class="container" style="width: 50%;">
                         <form name="popForm">
                             <center>
-                                <input id="task" class="input-xlarge" type="text" ng-change="td.valid(td.currentInf.task)" ng-model="td.currentInf.task" placeholder="ЗАДАЧА">
-                                <select class="form-control" ng-model="td.currentInf.importance">
+                                <input id="task" ng-class="{validation: td.butCheck}" type="text" ng-change="td.valid(td.currentInf.task)" ng-model="td.currentInf.task" placeholder="ЗАДАЧА">
+                                <select class="form-control" ng-class="{validation: td.butCheck}" ng-model="td.currentInf.importance">
                                     <option ng-repeat="rw in td.import" value="{{rw.value}}" ng-selected="rw.text == td.currentInf.importance">{{rw.text}}</option>
                                 </select>
                                 <input id="data" class="input-xlarge" ng-model="td.currentInf.date" type="date" value="{{td.currentInf.date}}" required> </center>
                         </form>
                     </div>
                     <center>
-                        <button ng-class="{btnForm: true, btnAct: td.butCheck}" ng-click="td.save()" type="submit" data-dismiss="modal" style="margin:30px 0 20px 0" name="popBtn">{{td.popup}}</button>
+                        <button ng-class="{btnForm: true, btnAct: td.butCheck}" ng-click="td.save()" ng-disabled="!td.butCheck" type="submit" data-dismiss="modal" style="margin:30px 0 20px 0" name="popBtn">{{td.popup}}</button>
                     </center>
                 </div>
             </div>

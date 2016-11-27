@@ -21,6 +21,7 @@
         td.add = add;
         td.edit = edit;
         td.delete = delet;
+        td.deleteRows = deletRows;
         td.valid = validation;
 
         init();
@@ -73,6 +74,7 @@
 
         function add() {
             console.log('add');
+            td.butCheck = false;
             td.popup = "ДОБАВИТЬ";
             td.currentInf = { index: td.rows.length, task: '', importance: '', date: '' };
         }
@@ -90,6 +92,20 @@
                     td.rows.splice(i, 1);
                 }
             }
+        }
+
+        function deletRows() {
+            console.log("delete rows");
+            var ck;
+            do {
+                ck = false;
+                for (var i = 0; i < td.rows.length; i++) {
+                    if (td.rows[i].check) {
+                        ck = true;
+                        td.rows.splice(i, 1);
+                    }
+                }
+            } while (ck);
         }
 
         function sort(fieldName) {
