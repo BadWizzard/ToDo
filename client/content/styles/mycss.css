@@ -28,9 +28,9 @@
     display: inline-block;
     font-weight: 700;
     font-family: 'Comfortaa', cursive;
-   -webkit-box-shadow: 0px 17px 59px -13px rgba(168,165,168,1);
--moz-box-shadow: 0px 17px 59px -13px rgba(168,165,168,1);
-box-shadow: 0px 17px 59px -13px rgba(168,165,168,1);
+    -webkit-box-shadow: 0px 17px 59px -13px rgba(168, 165, 168, 1);
+    -moz-box-shadow: 0px 17px 59px -13px rgba(168, 165, 168, 1);
+    box-shadow: 0px 17px 59px -13px rgba(168, 165, 168, 1);
 }
 
 ::-webkit-input-placeholder {
@@ -41,7 +41,7 @@ box-shadow: 0px 17px 59px -13px rgba(168,165,168,1);
     font-weight: 400;
 }
 
-input[type="text"] {
+input[type="text"], input[type="date"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -52,14 +52,33 @@ input[type="text"] {
     background-color: #ecf0f1;
     border-radius: 19px;
     padding: 5px 5px 5px 15px;
-    width: 50%;
+    width: 100%;
     color: #34495e;
     margin: 0 0 20px 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Comfortaa', sans-serif;
     font-size: 15px;
 }
+input[type="date"] {
+    font-family: 'Comfortaa', sans-serif;
+}
+select {
 
-input[type="text"]:focus {
+    border-style: none !important;
+    background-color: #ecf0f1 !important;
+    border-radius: 30px !important;
+    color: #34495e !important;
+    margin: 0 0 20px 0 !important;
+    font-family: 'Comfortaa', sans-serif !important;
+    font-size: 15px !important;
+}
+select:focus {
+    transition: border-bottom-color 1s;
+    background-color: #ffffff !important;
+    -webkit-box-shadow: 0px 5px 15px 1px rgba(219, 219, 219, 1) !important;
+    -moz-box-shadow: 0px 5px 15px 1px rgba(219, 219, 219, 1) !important;
+    box-shadow: 0px 5px 15px 1px rgba(219, 219, 219, 1) !important;
+}
+input[type="text"]:focus, input[type="date"]:focus {
     border-style: none;
     transition: border-bottom-color 1s;
     background-color: #ffffff;
@@ -76,7 +95,7 @@ input:required:invalid {
     outline: 0;
 }
 
-input:required:valid {
+input:required:valid, .validation {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -110,20 +129,25 @@ th {
     font-family: 'Comfortaa', cursive;
     font-size: 23px;
     background-color: #3498db;
-    color:#ffffff;
+    color: #ffffff;
 }
 
 td {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Comfortaa', sans-serif;
     font-size: 20px;
     font-weight: 300;
-    color:#acb1b7;
+    color: #acb1b7;
     background-color: #f4f9ff;
-    
 }
-tr:hover{
+
+tr:hover {
     background-color: #5c7b9f !important;
 }
+
+#changelink {
+    text-decoration: none;
+}
+
 .btnForm {
     font-family: 'Comfortaa', cursive;
     width: 200px;
@@ -135,6 +159,20 @@ tr:hover{
     font-weight: 700;
     font-size: 17px;
     letter-spacing: 2px;
+}
+
+.btnAct {
+    color: #ffffff !important;
+    background-color: #2ecc71 !important;
+    border-style: none;
+    transition: border-bottom-color 1s;
+    -webkit-box-shadow: 0px 5px 15px 1px rgba(219, 219, 219, 1);
+    -moz-box-shadow: 0px 5px 15px 1px rgba(219, 219, 219, 1);
+    box-shadow: 0px 5px 15px 1px rgba(219, 219, 219, 1);
+}
+
+.cross {
+    text-decoration: line-through;
 }
 
 .btnTable {
@@ -150,6 +188,7 @@ tr:hover{
     margin: 20px 0 20px 0;
     cursor: pointer;
 }
-#popUp{
+
+#popUp {
     background-image: url(http://s019.radikal.ru/i606/1610/9b/19ea50f2e8d7.png)
 }
