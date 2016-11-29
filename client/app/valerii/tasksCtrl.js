@@ -61,6 +61,11 @@
             if (td.currentInf.importance.length == 0) {
                 td.currentInf.importance = td.import[1].text;
             }
+            for (var i = 0; i < td.import.length; i++) {
+                if (td.currentInf.importance == td.import[i].value) {
+                    td.currentInf.importance = td.import[i].text;
+                }
+            }
             if (td.currentInf.index === td.rows.length) {
                 td.rows.push(td.currentInf);
             } else {
