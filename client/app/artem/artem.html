@@ -1,17 +1,17 @@
 <div class="container" ng-controller="noteBookCtrl as nb">
-    <a href="#myPopUp" id="add" data-toggle="modal" ng-click='nb.add()'>ДОБАВИТЬ ЗАПИСЬ</a>
-    <input type="text" id="filter" placeholder="ПОИСК" ng-model="nb.filterBySite">
+    <a href="#myPopUp" id="buttonAdd" data-toggle="modal" ng-click='nb.add()'>ДОБАВИТЬ ЗАПИСЬ</a>
+    <input type="text" id="filterInput" placeholder="ПОИСК" ng-model="nb.filterBySite">
     <div id="myPopUp" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content" id="popUp">
                 <div class="modal-body">
                     <p id="formTitle">Добавить Запись</p>
                     <hr color="#2c3e50" style="width:20%;">
-
                     <center>
                         <input id="site" class="input-xlarge" type="text" ng-model="nb.currentInf.site" placeholder="САЙТ" oninput="validate()" required>
                         <input id="login" class="input-xlarge" type="text" ng-model="nb.currentInf.login" placeholder="ЛОГИН" oninput="validate()" required>
                         <input id="password" class="input-xlarge" type="text" ng-model="nb.currentInf.pass" placeholder="ПАРОЛЬ" oninput="validate()" required>
+                       
                     </center>
                     <center>
                         <button onClick="validate()" type="submit" class="btnForm" data-dismiss="modal" style="margin:30px 0 20px 0" name="popBtn" ng-click="nb.save()" disabled>СОХРАНИТЬ</button>
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div id="myPopUpCh" class="modal fade">
+    <div id="changePopUp" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content" id="popUp">
                 <div class="modal-body">
@@ -34,7 +34,7 @@
                     </center>
 
                     <center>
-                        <button type="submit" class="btnFormCh" data-dismiss="modal" style="margin:30px 0 20px 0" name="popBtn" ng-click="nb.save()">СОХРАНИТЬ</button>
+                        <button type="submit" class="changeBtn" data-dismiss="modal" style="margin:30px 0 20px 0" name="popBtn" ng-click="nb.save()">СОХРАНИТЬ</button>
                     </center>
                 </div>
             </div>
@@ -54,7 +54,7 @@
             <tbody>
 
                 <tr ng-repeat="row in nb.diary | filter: {site: nb.filterBySite } | orderBy:nb.sortField:nb.reverse" ng-click="nb.edit(row)">
-                    <td> <a href="#myPopUpCh" data-toggle="modal" id="changelink"><span ng-bind="row.site"></span></a></td>
+                    <td> <a href="#changePopUp" data-toggle="modal" id="changelink"><span ng-bind="row.site"></span></a></td>
                     <td><span ng-bind="row.login"></span></td>
                     <td><span ng-bind="row.pass"></span></td>
                 </tr>
