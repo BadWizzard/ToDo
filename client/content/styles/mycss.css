@@ -41,7 +41,7 @@
     font-weight: 400;
 }
 
-input[type="text"], input[type="date"] {
+input[type="text"], input[type="date"], input[type="email"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -78,7 +78,7 @@ select:focus {
     -moz-box-shadow: 0px 5px 15px 1px rgba(219, 219, 219, 1) !important;
     box-shadow: 0px 5px 15px 1px rgba(219, 219, 219, 1) !important;
 }
-input[type="text"]:focus, input[type="date"]:focus {
+input[type="text"]:focus, input[type="date"]:focus, input[type="email"]:focus {
     border-style: none;
     transition: border-bottom-color 1s;
     background-color: #ffffff;
