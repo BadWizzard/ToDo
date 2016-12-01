@@ -16,7 +16,7 @@
           btn.style.backgroundColor = "#ecf0f1";
       }
   }
-  function addToTable() {
+/*  function addToTable() {
       var values = [document.getElementById('site').value, document.getElementById('login').value, document.getElementById('password').value];
       var tbody = document.getElementsByTagName('tbody')[0];
       var line = document.createElement('tr');
@@ -30,4 +30,4 @@
       }
       tbody.appendChild(line);
     
-  }
+  }*/
