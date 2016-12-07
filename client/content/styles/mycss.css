@@ -23,14 +23,20 @@
 #filterInput{
     display: inline-block;
     margin:0 0 0 200px;
-    width:250px;
-    border-radius: 4px;
+    width:100%;
+    max-width:250px;
+    border-radius: 25px;
     color: #8c8c8c;
-    width: 200px;
-    text-align: center;
-    line-height: 40px;
-    background-color: #ffffff;
+    text-align: left;
+    line-height: 35px;
+    background-color: #ecf0f1;
     display: inline-block;
+    font-weight: 700;
+    font-family: 'Comfortaa', cursive;
+}
+#filterInput:focus{
+    display: inline-block;
+    background-color: #ffffff;
     font-weight: 700;
     font-family: 'Comfortaa', cursive;
     -webkit-box-shadow: 0px 17px 59px -13px rgba(168, 165, 168, 1);
@@ -52,15 +58,19 @@ input[type="text"], input[type="date"], input[type="email"] {
     -ms-appearance: none;
     appearance: none;
     outline: 0;
+    display: block;
     box-shadow: none;
     border-style: none;
     background-color: #ecf0f1;
-    border-radius: 19px;
+    border-radius: 25px;
     padding: 5px 5px 5px 15px;
+    max-width: 300px;
     width: 100%;
     color: #34495e;
     margin: 0 0 20px 0;
     font-size: 15px;
+    line-height: 20px;
+    font-family: 'Comfortaa', sans-serif;
 }
 input[type="text"]:focus {
     font-family: 'Comfortaa', sans-serif;
@@ -156,6 +166,7 @@ tr:hover {
     font-weight: 700;
     font-size: 17px;
     letter-spacing: 2px;
+    margin:30px 0 20px 0
 }
 .changeBtn {
     font-family: 'Roboto Condensed', sans-serif;
