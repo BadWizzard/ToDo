@@ -12,6 +12,7 @@
         td.filterByTask = "";
         td.sortField = "";
         td.popup = "";
+        td.modalWindow = "/#myPop";
         td.reverse = false;
         td.currentInf = null;
         td.butCheck = false;
