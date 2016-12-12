@@ -1,7 +1,7 @@
 <div class="container" ng-controller="ContactsCtrl as cc">
     <div class="col-md-12 offset-from-top">
         <!-- Button trigger modal -->
-        <a href="#myModal" type="button" id="buttonAdd" data-toggle="modal" style="margin-bottom: 30px; margin-right: 20px;" ng-click="cc.add()">
+        <a href="/#myModal" type="button" id="buttonAdd" data-toggle="modal" style="margin-bottom: 30px; margin-right: 20px;" ng-click="cc.add()">
             Добавить новый контакт</a>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -16,7 +16,7 @@
                     <div class="modal-body">
                         <form action="" method="">
                             <div class="form-group">
-                                <label for="inputFirstName">Имя {{cc.modCheck[0]}}<span style="color: red;">*</span></label>
+                                <label for="inputFirstName">Имя <span style="color: red;">*</span></label>
                                 <input type="text" ng-change="cc.valid(cc.rowContact)" ng-class="{validation: cc.modCheck[0]}" class="form-control" id="inputFirstName" placeholder="Имя" ng-model="cc.rowContact.firstname">
                             </div>
                             <div class="form-group">
@@ -24,11 +24,11 @@
                                 <input type="text" ng-change="cc.valid(cc.rowContact)" ng-class="{validation: cc.modCheck[1]}" class="form-control" id="inputLastName" placeholder="Фамилия" ng-model="cc.rowContact.lastname">
                             </div>
                             <div class="form-group">
-                                <label for="inputTelephoneNumber">Номер телефона {{cc.modCheck[2]}}<span style="color: red;">*</span></label>
+                                <label for="inputTelephoneNumber">Номер телефона <span style="color: red;">*</span></label>
                                 <input type="text" ng-change="cc.valid(cc.rowContact)" ng-class="{validation: cc.modCheck[2]}" class="form-control" id="inputTelephoneNumber" placeholder="Номер телефона" ng-model="cc.rowContact.tel">
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail">Почтовый адрес {{cc.modCheck[3]}}<span style="color: red;">*</span></label>
+                                <label for="inputEmail">Почтовый адрес <span style="color: red;">*</span></label>
                                 <input type="email" ng-change="cc.valid(cc.rowContact)" ng-class="{validation: cc.modCheck[3]}" class="form-control" id="inputEmail" placeholder="Example: iriska@gmail.com" ng-model="cc.rowContact.email">
                             </div>
                         </form>

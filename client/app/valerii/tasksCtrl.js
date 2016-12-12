@@ -81,6 +81,7 @@
             console.log('add');
             td.butCheck = false;
             td.popup = "ДОБАВИТЬ";
+            console.log(td.popup);
             td.currentInf = { index: td.rows.length, task: '', importance: '', date: '' };
         }
 

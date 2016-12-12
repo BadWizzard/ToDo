@@ -1,7 +1,7 @@
 ﻿<div class="container wrap" ng-controller="TodoCtrl as td">
-    <a href="#myPopUp" id="buttonAdd" ng-click="td.add()" data-toggle="modal" style="margin-bottom: 30px; margin-right: 20px;">ДОБАВИТЬ ЗАПИСЬ</a>
+    <a href="/#myPop" id="buttonAdd" ng-click="td.add()" data-toggle="modal" style="margin-bottom: 30px; margin-right: 20px;">ДОБАВИТЬ ЗАПИСЬ</a>
     <button id="buttonAdd" ng-click="td.deleteRows()" style="margin-bottom: 30px; background-color: #F78181; color: #ffffff;">УДАЛИТЬ ЗАДАНИЯ</button>
-    <div id="myPopUp" class="modal fade">
+    <div id="myPop" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content" id="popUp">
                 <div class="modal-body">
@@ -67,7 +67,7 @@
                     <a href="#myPopUp" data-toggle="modal" id="changelink" ng-click="td.edit(row)"><span ng-bind="row.importance"></span></a>
                 </td>
                 <td width="210px">
-                    <a href="#myPopUp" data-toggle="modal" id="changelink" ng-click="td.edit(row)"><span ng-bind="row.date | date:'dd-mm-yyyy'"></span></a>
+                    <a href="#myPopUp" data-toggle="modal" id="changelink" ng-click="td.edit(row)"><span ng-bind="row.date | date:'dd-MM-yyyy'"></span></a>
                 </td>
                 <td width="60px">
                     <a ng-click="td.delete(row)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
