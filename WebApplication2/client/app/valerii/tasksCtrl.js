@@ -1,9 +1,9 @@
 (function() {
 
     var moduleId = "TodoCtrl";
-    angular.module("ToDo").controller(moduleId, [todoCtrl]);
+    angular.module("ToDo").controller(moduleId, ['$http', todoCtrl]);
 
-    function todoCtrl() {
+    function todoCtrl($http) {
 
         var td = this;
 
@@ -12,8 +12,9 @@
         td.filterByTask = "";
         td.sortField = "";
         td.popup = "";
-        td.reverse = false;
+        td.modalWindow = "#myPop";
         td.currentInf = null;
+        td.reverse = false;
         td.butCheck = false;
         td.check = false;
         td.save = save;
@@ -23,10 +24,24 @@
         td.delete = delet;
         td.deleteRows = deletRows;
         td.valid = validation;
-
+        
         init();
 
         function init() {
+            $http({
+                method: 'GET',
+                url: '/api/Todo'
+            }).then(function successCallback(response) {
+                td.rows = response.data;
+                for (var i = 0; i < td.rows.length; i++) {
+                    td.rows[i].date = new Date(td.rows[i].date);
+                }
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                console.log(response);
+                td.rows = [];
+            });
             td.import = [{
                 text: 'Очень важно',
                 value: 1
@@ -36,20 +51,6 @@
             }, {
                 text: 'Не важно',
                 value: 3
-            }];
-
-            td.rows = [{
-                index: 0,
-                task: 'Поспать',
-                importance: td.import[1].text,
-                date: new Date("2016-11-10"),
-                check: false
-            }, {
-                index: 1,
-                task: 'Покушать',
-                importance: td.import[0].text,
-                date: new Date("2015-11-10"),
-                check: false
             }];
         }
 
@@ -71,8 +72,16 @@
             } else {
                 td.rows[td.currentInf.index] = td.currentInf;
             }
+            var parameter = JSON.stringify(td.currentInf);
+            $http.post('/api/Todo/', parameter).then(function successCallback(response) {
+                td.rows = response.data;
+                for (var i = 0; i < td.rows.length; i++) {
+                    td.rows[i].date = new Date(td.rows[i].date);
+                }
+            }, function errorCallback(response) {
+                console.log(response.statusText);
+            });
         }
-
         function validation(task) {
             td.butCheck = (task.length != 0);
         }
@@ -81,8 +90,7 @@
             console.log('add');
             td.butCheck = false;
             td.popup = "ДОБАВИТЬ";
-            console.log(td.popup);
-            td.currentInf = { index: td.rows.length, task: '', importance: '', date: '' };
+            td.currentInf = { id: td.rows.length, task: '', importance: '', date: '' };
         }
 
         function edit(row) {
@@ -93,25 +101,40 @@
 
         function delet(row) {
             console.log("delete");
-            for (var i = 0; i < td.rows.length; i++) {
-                if (row.index == td.rows[i].index) {
-                    td.rows.splice(i, 1);
+            console.log(row.id);
+            $http({
+                method: 'DELETE',
+                url: '/api/Todo/' + row.id
+            }).then(function successCallback(response) {
+                td.rows = response.data;
+                for (var i = 0; i < td.rows.length; i++) {
+                    td.rows[i].date = new Date(td.rows[i].date);
                 }
-            }
+                console.log(response.data);
+            }, function errorCallback(response) {
+                console.log("error delete " + responce);
+            });
         }
 
         function deletRows() {
             console.log("delete rows");
-            var ck;
-            do {
-                ck = false;
-                for (var i = 0; i < td.rows.length; i++) {
-                    if (td.rows[i].check) {
-                        ck = true;
-                        td.rows.splice(i, 1);
-                    }
+            var checkedId = [];
+            td.rows.forEach(function (item, i, arr) {
+                if (item.check) {
+                    $http({
+                        method: 'DELETE',
+                        url: '/api/Todo/' + item.id
+                    }).then(function successCallback(response) {
+                        td.rows = response.data;
+                    }, function errorCallback(response) {
+                        console.log("error delete " + responce);
+                    });
                 }
-            } while (ck);
+            });
+            for (var i = 0; i < td.rows.length; i++) {
+                td.rows[i].date = new Date(td.rows[i].date);
+            }
+            
         }
 
         function sort(fieldName) {

@@ -9,7 +9,7 @@ namespace WebApplication2.Models
     {
         public int id { get; set; }
         public string task { get; set; }
-        public int importance { get; set; }
+        public string importance { get; set; }
         public DateTime date { get; set; }
     }
 }

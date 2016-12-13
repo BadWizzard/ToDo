@@ -10,15 +10,17 @@ namespace WebApplication2.Controllers
 {
     public class TodoController : ApiController
     {
+
         // GET: api/Todo
-        public IEnumerable<Todo> Get()
+        public List<Todo> Get()
         {
-            return new Todo[]
+            if (Main.todos.Count == 0)
             {
-                new Todo {id = 0, task = "1task", importance = 1, date = new DateTime(2016,4,4) },
-                new Todo {id = 1, task = "2task", importance = 3, date = new DateTime(2016,10,8) },
-                new Todo {id = 2, task = "3task", importance = 2, date = new DateTime(2016,6,5) }
-            };
+                Main.todos.AddRange(new[]{ new Todo { id = 0, task = "Поспать", importance = "Очень важно", date = new DateTime(2016, 4, 4) },
+                new Todo { id = 1, task = "Сделать лабы", importance = "Не важно", date = new DateTime(2016, 10, 8) },
+                new Todo { id = 2, task = "Покушать", importance = "Важно", date = new DateTime(2016, 6, 5) }});
+            }
+            return Main.todos;
         }
 
         // GET: api/Todo/5
@@ -28,18 +30,38 @@ namespace WebApplication2.Controllers
         }
 
         // POST: api/Todo
-        public void Post([FromBody]string value)
+        public List<Todo> Post([FromBody]Todo obj)
         {
+            bool edit = false;
+            for (int i = 0; i < Main.todos.Count; i++)
+            {
+                if (Main.todos[i].id == obj.id)
+                {
+                    edit = true;
+                    break;
+                }
+            }
+            if(edit)
+                Main.todos[obj.id] = obj;
+            else
+                Main.todos.Add(obj);
+            return Main.todos;
         }
 
         // PUT: api/Todo/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id)
         {
         }
 
         // DELETE: api/Todo/5
-        public void Delete(int id)
+        public List<Todo> Delete(int id)
         {
+            for (int i = 0; i < Main.todos.Count; i++)
+            {
+                if (Main.todos[i].id == id)
+                    Main.todos.RemoveAt(i);
+            }
+            return Main.todos;
         }
     }
 }

@@ -10,11 +10,11 @@ angular.module("ToDo", ['ngRoute']).config(
             .when('/valerii/', {
                 templateUrl: 'client/app/valerii/tasks.html',
             })
-            .when('/#myModal', {
-                templateUrl: 'client/app/irina/contacts.html',
+            .when('/valerii/:id', {
+                templateUrl: 'client/app/valerii/tasks.html',
             })
-            .when('/#myPopUp', {
-                templateUrl: 'client/app/artem/password.html',
+            .when('/valerii/:id/:task/:import/:date', {
+                templateUrl: 'client/app/valerii/tasks.html',
             })
             .otherwise({
                 redirectTo: '/valerii'

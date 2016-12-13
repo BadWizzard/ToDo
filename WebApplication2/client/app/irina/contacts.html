@@ -1,7 +1,7 @@
 <div class="container" ng-controller="ContactsCtrl as cc">
     <div class="col-md-12 offset-from-top">
         <!-- Button trigger modal -->
-        <a href="#/#myModal" type="button" id="buttonAdd" data-toggle="modal" style="margin-bottom: 30px; margin-right: 20px;" ng-click="cc.add()">
+        <a id="buttonAdd" data-toggle="modal" data-target="#myModal" style="margin-bottom: 30px; margin-right: 20px;" ng-click="cc.add()">
             Добавить новый контакт</a>
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -85,9 +85,9 @@
                         <button class="btn btn-danger btn-xs" ng-click="cc.delete(contact)">
                             <i class="glyphicon glyphicon-trash"></i>
                         </button>
-                        <a href="#myModal" data-toggle="modal" class="btn btn-info btn-xs" ng-click="cc.edit(contact)">
+                        <button data-toggle="modal" data-target="#myModal" class="btn btn-info btn-xs" ng-click="cc.edit(contact)">
                             <i class="glyphicon glyphicon-pencil"></i>
-                        </a>
+                        </button>
                     </td>
                 </tr>
             </tbody>
