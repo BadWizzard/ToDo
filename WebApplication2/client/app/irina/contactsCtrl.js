@@ -1,8 +1,8 @@
 (function() {
     var moduleId = "ContactsCtrl";
-    angular.module("ToDo").controller(moduleId, [contactsCtrl]);
+    angular.module("ToDo").controller(moduleId, ['$http', contactsCtrl]);
 
-    function contactsCtrl() {
+    function contactsCtrl($http) {
         var cc = this;
 
         cc.contacts = [];
@@ -12,7 +12,6 @@
         cc.delete = delet;
         cc.sort = sort;
         cc.valid = validation;
-        cc.isEdit = false;
         cc.modCheck = [];
         cc.buttonText = '';
         cc.sortBy = '';
@@ -24,11 +23,12 @@
 
         function saveData() {
             console.log("save");
-            if (cc.isEdit == false) {
-                cc.contacts.push(cc.rowContact);
-            } else {
-                cc.contacts[cc.rowContact.index - 1] = cc.rowContact;
-            }
+            var parameter = JSON.stringify(cc.rowContact);
+            $http.post('/api/Contacts', parameter).then(function successCallback(response) {
+                cc.contacts = response.data;
+            }, function errorCallback(response) {
+                console.log(response.statusText);
+            });
         }
 
         function sort(sortBy) {
@@ -63,33 +63,34 @@
         function edit(row) {
             console.log("edit");
             cc.rowContact = angular.copy(row);
-            cc.isEdit = true;
             cc.buttonText = "Редактировать";
         }
 
         function delet(row) {
             console.log("delete");
-            for (var i = 0; i < cc.contacts.length; i++) {
-                if (row.index == cc.contacts[i].index) {
-                    cc.contacts.splice(i, 1);
-                }
-            }
+            $http({
+                method: 'DELETE',
+                url: '/api/Contacts/' + row.index
+            }).then(function successCallback(response) {
+                cc.contacts = response.data;
+                console.log(response.data);
+            }, function errorCallback(response) {
+                console.log("error delete " + responce);
+            });
         }
 
         function init() {
-            cc.contacts = [{
-                index: 1,
-                lastname: "tkachuk",
-                firstname: "irina",
-                tel: "0994175294",
-                email: "irinatkachuk23@gmail.com"
-            }, {
-                index: 2,
-                lastname: "Oderii",
-                firstname: "Valerii",
-                tel: "09941112111",
-                email: "valerii@gmail.com"
-            }];
+            $http({
+                method: 'GET',
+                url: '/api/Contacts'
+            }).then(function successCallback(response) {
+                cc.contacts = response.data;
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                console.log(response);
+                cc.contacts = [];
+            });
             for (var i = 0; i < 4; i++) {
                 cc.modCheck[i] = false;
             }

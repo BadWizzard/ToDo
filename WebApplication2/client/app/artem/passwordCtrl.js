@@ -15,48 +15,45 @@
         vm.currentInf = null;
         vm.add = add;
         vm.edit = edit;
+        vm.delete = del;
         
         init();
 
         function save() {
             console.log("Button Save clicked");
-            if (vm.currentInf.index === vm.diary.length) {
-                vm.diary.push(vm.currentInf);
-            } else {
-                vm.diary[vm.currentInf.index] = vm.currentInf;
-            }
+            var parameter = JSON.stringify(vm.currentInf);
+            $http.post('api/Passwords', parameter).then(function successCallback(response) {
+                vm.diary = response.data;
+            }, function errorCallback(response) {
+                console.log(response.statusText);
+            });
+        }
+
+        function del(row) {
+            console.log("delete");
+            $http({
+                method: 'DELETE',
+                url: 'api/Passwords/' + row.index
+            }).then(function successCallback(response) {
+                vm.diary = response.data;
+                console.log(response.data);
+            }, function errorCallback(response) {
+                console.log("error delete " + responce);
+            });
         }
 
         function init() {
-
-            /*// Simple GET request example:
             $http({
-                method: 'GET'
-                , url: '/someUrl'
+                method: 'GET',
+                url: 'api/Passwords'
             }).then(function successCallback(response) {
-                // this callback will be called asynchronously
-                // when the response is available
                 vm.diary = response.data;
             }, function errorCallback(response) {
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
-            });*/
-           
-            vm.diary = [
-                {
-                    index: 0
-                    , site: 'vk'
-                    , login: 'mylogin'
-                    , pass: '*****'
-                }
-                , {
-                    index: 1
-                    , site: 'inst'
-                    , login: '1login'
-                    , pass: '****'
-                    
-                }
-            , ];
+                console.log(response);
+                vm.diary = [];
+            });
         }
 
         function add() {

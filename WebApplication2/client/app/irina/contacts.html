@@ -75,7 +75,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="contact in cc.contacts | orderBy:cc.sortBy:true | filter: {firstname: cc.filterByFirstname, lastname:cc.filterByLastname}">
+                <tr ng-repeat="contact in cc.contacts | orderBy: ['index', cc.sortBy] | filter: {firstname: cc.filterByFirstname, lastname:cc.filterByLastname}">
                     <th ng-bind="contact.index"></th>
                     <td ng-bind="contact.firstname"></td>
                     <td ng-bind="contact.lastname"></td>

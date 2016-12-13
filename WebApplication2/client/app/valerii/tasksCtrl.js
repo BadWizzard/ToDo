@@ -101,7 +101,6 @@
 
         function delet(row) {
             console.log("delete");
-            console.log(row.id);
             $http({
                 method: 'DELETE',
                 url: '/api/Todo/' + row.id
