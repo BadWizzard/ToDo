@@ -34,7 +34,7 @@ namespace WebApplication2.Controllers
             bool edit = false;
             for (int i = 0; i < Main.passwords.Count; i++)
             {
-                if (Main.passwords[i].index == obj.index)
+                if (Main.passwords[i].index == obj.index && obj.index < Main.passwords.Count)
                 {
                     edit = true;
                     break;
@@ -44,7 +44,7 @@ namespace WebApplication2.Controllers
                 Main.passwords[obj.index] = obj;
             else
                 Main.passwords.Add(obj);
-
+            Update_id();
             return Main.passwords;
         }
 
@@ -61,7 +61,15 @@ namespace WebApplication2.Controllers
                 if (Main.passwords[i].index == id)
                     Main.passwords.RemoveAt(i);
             }
+            Update_id();
             return Main.passwords;
+        }
+        private void Update_id()
+        {
+            for (int i = 0; i < Main.passwords.Count; i++)
+            {
+                Main.passwords[i].index = i;
+            }
         }
     }
 }

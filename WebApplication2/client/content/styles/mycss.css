@@ -156,6 +156,12 @@ tr:hover {
 
 #changelink {
     text-decoration: none;
+    cursor: pointer;
+    color: #337AC6;
+}
+
+#changelink:hover {
+    color: #2D689A;
 }
 
 .btnForm {

@@ -73,7 +73,6 @@
                 url: '/api/Contacts/' + row.index
             }).then(function successCallback(response) {
                 cc.contacts = response.data;
-                console.log(response.data);
             }, function errorCallback(response) {
                 console.log("error delete " + responce);
             });

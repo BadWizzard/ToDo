@@ -34,7 +34,7 @@ namespace WebApplication2.Controllers
             bool edit = false;
             for (int i = 0; i < Main.contacts.Count; i++)
             {
-                if (Main.contacts[i].index == obj.index)
+                if (Main.contacts[i].index == obj.index && obj.index <= Main.contacts.Count)
                 {
                     edit = true;
                     break;
@@ -44,7 +44,7 @@ namespace WebApplication2.Controllers
                 Main.contacts[obj.index-1] = obj;
             else
                 Main.contacts.Add(obj);
-
+            Update_index();
             return Main.contacts;
         }
 
@@ -61,7 +61,15 @@ namespace WebApplication2.Controllers
                 if (Main.contacts[i].index == id)
                     Main.contacts.RemoveAt(i);
             }
+            Update_index();
             return Main.contacts;
+        }
+        private void Update_index()
+        {
+            for (int i = 0; i < Main.contacts.Count; i++)
+            {
+                Main.contacts[i].index = i+1;
+            }
         }
     }
 }

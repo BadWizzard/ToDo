@@ -35,7 +35,7 @@ namespace WebApplication2.Controllers
             bool edit = false;
             for (int i = 0; i < Main.todos.Count; i++)
             {
-                if (Main.todos[i].id == obj.id)
+                if (Main.todos[i].id == obj.id && obj.id <= Main.todos.Count)
                 {
                     edit = true;
                     break;
@@ -45,6 +45,7 @@ namespace WebApplication2.Controllers
                 Main.todos[obj.id] = obj;
             else
                 Main.todos.Add(obj);
+            Update_id();
             return Main.todos;
         }
 
@@ -61,7 +62,15 @@ namespace WebApplication2.Controllers
                 if (Main.todos[i].id == id)
                     Main.todos.RemoveAt(i);
             }
+            Update_id();
             return Main.todos;
+        }
+        private void Update_id()
+        {
+            for (int i = 0; i < Main.todos.Count; i++)
+            {
+                Main.todos[i].id = i;
+            }
         }
     }
 }
