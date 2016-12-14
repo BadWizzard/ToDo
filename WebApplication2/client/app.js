@@ -1,25 +1,25 @@
 angular.module("ToDo", ['ngRoute']).config(
     ['$routeProvider', function($routeProvider) {
         $routeProvider
-            .when('/artem/', {
-                templateUrl: 'client/app/artem/password.html',
+            .when('/passwords/', {
+                templateUrl: 'client/app/passwords/password.html',
             })
-            .when('/artem/:id', {
-                templateUrl: 'client/app/artem/password.html',
+            .when('/passwords/:id', {
+                templateUrl: 'client/app/passwords/password.html',
             })
-            .when('/irina/', {
-                templateUrl: 'client/app/irina/contacts.html',
+            .when('/contacts/', {
+                templateUrl: 'client/app/contacts/contacts.html',
             })
-            .when('/irina/:id', {
-                templateUrl: 'client/app/irina/contacts.html',
+            .when('/contacts/:id', {
+                templateUrl: 'client/app/contacts/contacts.html',
             })
-            .when('/valerii/', {
-                templateUrl: 'client/app/valerii/tasks.html',
+            .when('/tasks/', {
+                templateUrl: 'client/app/tasks/tasks.html',
             })
-            .when('/valerii/:id', {
-                templateUrl: 'client/app/valerii/tasks.html',
+            .when('/tasks/:id', {
+                templateUrl: 'client/app/tasks/tasks.html',
             })
             .otherwise({
-                redirectTo: '/valerii'
+                redirectTo: '/tasks'
             });
     }]);

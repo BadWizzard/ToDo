@@ -62,13 +62,13 @@
                 <td align="center" width="30">
                     <input type="checkbox" ng-model="row.check">
                 </td>
-                <td>
-                    <a data-toggle="modal" data-target="{{td.modalWindow}}" id="changelink" ng-click="td.edit(row)"><span ng-bind="row.task"></span></a>
+                <td data-target="{{td.modalWindow}}" data-toggle="modal" id="changelink" ng-click="td.edit(row)">
+                    <span ng-bind="row.task"></span></a>
                 </td>
-                <td width="300px">
+                <td width="300px" data-target="{{td.modalWindow}}" data-toggle="modal" id="changelink" ng-click="td.edit(row)">
                     <a data-target="{{td.modalWindow}}" data-toggle="modal" id="changelink" ng-click="td.edit(row)"><span ng-bind="row.importance"></span></a>
                 </td>
-                <td width="210px">
+                <td width="210px" data-target="{{td.modalWindow}}" data-toggle="modal" id="changelink" ng-click="td.edit(row)">
                     <a data-target="{{td.modalWindow}}" data-toggle="modal" id="changelink" ng-click="td.edit(row)"><span ng-bind="row.date | date:'dd-MM-yyyy'"></span></a>
                 </td>
                 <td width="60px">

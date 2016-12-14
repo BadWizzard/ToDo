@@ -101,9 +101,27 @@
 
         function delet(row) {
             console.log("delete");
+            deleteId(row.id);
+        }
+
+        function deletRows() {
+            console.log("delete rows");
+            var checkedId = [];
+            td.rows.forEach(function (item, i, arr) {
+                if (item.check) {
+                    deleteId(item.id);
+                }
+            });
+            for (var i = 0; i < td.rows.length; i++) {
+                td.rows[i].date = new Date(td.rows[i].date);
+            }
+            
+        }
+        
+        function deleteId(id) {
             $http({
                 method: 'DELETE',
-                url: '/api/Todo/' + row.id
+                url: '/api/Todo/' + id
             }).then(function successCallback(response) {
                 td.rows = response.data;
                 for (var i = 0; i < td.rows.length; i++) {
@@ -113,27 +131,6 @@
             }, function errorCallback(response) {
                 console.log("error delete " + responce);
             });
-        }
-
-        function deletRows() {
-            console.log("delete rows");
-            var checkedId = [];
-            td.rows.forEach(function (item, i, arr) {
-                if (item.check) {
-                    $http({
-                        method: 'DELETE',
-                        url: '/api/Todo/' + item.id
-                    }).then(function successCallback(response) {
-                        td.rows = response.data;
-                    }, function errorCallback(response) {
-                        console.log("error delete " + responce);
-                    });
-                }
-            });
-            for (var i = 0; i < td.rows.length; i++) {
-                td.rows[i].date = new Date(td.rows[i].date);
-            }
-            
         }
 
         function sort(fieldName) {
