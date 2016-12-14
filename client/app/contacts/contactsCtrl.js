@@ -82,13 +82,13 @@
                 lastname: "tkachuk",
                 firstname: "irina",
                 tel: "0994175294",
-                email: "irinatkachuk23@gmail.com"
+                email: "contactstkachuk23@gmail.com"
             }, {
                 index: 2,
                 lastname: "Oderii",
                 firstname: "Valerii",
                 tel: "09941112111",
-                email: "valerii@gmail.com"
+                email: "tasks@gmail.com"
             }];
             for (var i = 0; i < 4; i++) {
                 cc.modCheck[i] = false;

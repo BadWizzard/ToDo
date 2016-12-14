@@ -1,22 +1,22 @@
 angular.module("ToDo", ['ngRoute']).config(
     ['$routeProvider', function($routeProvider) {
         $routeProvider
-            .when('/artem/', {
-                templateUrl: 'client/app/artem/password.html',
+            .when('/passwords/', {
+                templateUrl: 'client/app/passwords/password.html',
             })
-            .when('/irina/', {
-                templateUrl: 'client/app/irina/contacts.html',
+            .when('/contacts/', {
+                templateUrl: 'client/app/contacts/contacts.html',
             })
-            .when('/valerii/', {
-                templateUrl: 'client/app/valerii/tasks.html',
+            .when('/tasks/', {
+                templateUrl: 'client/app/tasks/tasks.html',
             })
             .when('/#myModal', {
-                templateUrl: 'client/app/irina/contacts.html',
+                templateUrl: 'client/app/contacts/contacts.html',
             })
             .when('/#myPopUp', {
-                templateUrl: 'client/app/artem/password.html',
+                templateUrl: 'client/app/passwords/password.html',
             })
             .otherwise({
-                redirectTo: '/valerii'
+                redirectTo: '/tasks'
             });
     }]);
